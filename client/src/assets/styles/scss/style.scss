@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import "./../../../../node_modules/tailwindcss/base";
+@import "./../../../../node_modules/tailwindcss/components";
+@import "./../../../../node_modules/tailwindcss/utilities";
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.noselect
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+.limit--width
+{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2.5rem;
+    max-width: 1360px!important;
+}
+
+.page
+{
+    &-small
+    {
+        width: 22rem;
+        height: 34rem;
+    }
+    &-big
+    {
+        width: 100vw;
+        height: 100vh;
+    }
+}

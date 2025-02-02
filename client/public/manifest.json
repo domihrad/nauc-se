@@ -1,0 +1,33 @@
+{
+    "version": "1.1",
+    "name": "nauč-se",
+    "short_name": "Translator",
+    "description": "Vytvořil : Dominik Hradecký",
+    "manifest_version": 3,
+    "permissions" :
+    [
+        "tabs",
+        "storage",
+        "activeTab",
+        "scripting",
+        "contextMenus"
+    ],
+
+    "background" :
+    {
+        "service_worker" : "background.js"
+    },
+
+    "action" :
+    {
+
+        "default_popup" : "index.html"
+    },
+    "host_permissions" :
+    [
+        "<all_urls>",
+        "https://*/*",
+        "http://*/*",
+        "chrome-extension://pkjoeemjccpakffnbmgbnnhcdmijablf/*"
+    ]
+}
