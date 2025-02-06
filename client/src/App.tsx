@@ -24,7 +24,7 @@ const App: React.FC = () => {
             v7_relativeSplatPath: true,
         }}
         >
-        <div ref={homepageDivRef} className="page page-small bg-white dark:bg-slate-800 limit--width">
+        <div ref={homepageDivRef} className="page bg-white dark:bg-slate-800 limit--width">
             <Header />
             <Routes>
                 <Route path="/" element={<Homepage />} />

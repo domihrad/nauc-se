@@ -57,7 +57,8 @@ const WordsToHighlight = (text: string): string[] =>
 
 const GenerateWordId = (words: string[]): Record<string, string> =>
 {
-    return words.reduce((acc, word, index) => {
+    return words.reduce((acc, word, index) =>
+        {
         acc[word] = `hdw-${index}`;
         return acc;
     }, {} as Record<string, string>);

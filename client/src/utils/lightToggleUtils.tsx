@@ -67,9 +67,9 @@ export const LightToggleMode: React.FC = () =>
         <div className="flex items-right justify-center">
             <button onClick={darkModeHandler}>
                 {dark ? (
-                    <IoSunny className="text-base" style={{ color: "white" }} />
+                    <IoSunny size="20" className="text-base" style={{ color: "white" }} />
                 ) : (
-                    <IoMoon className="text-base" style={{ color: "black" }} />
+                    <IoMoon size="20" className="text-base" style={{ color: "black" }} />
                 )}
             </button>
         </div>

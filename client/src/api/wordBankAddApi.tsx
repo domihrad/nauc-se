@@ -26,20 +26,36 @@ export const WordBankAddApi = async (id: string, word: string) =>
             {
                 id : id,
                 word : word,
-
             }),
         });
 
         if (!response.ok)
         {
-            const errorData = await response.json();
-            throw new Error(errorData.error);
+            try
+            {
+                const errorData = await response.json();
+                throw new Error(errorData.error || "error");
+
+            }
+            catch (jsonError)
+            {
+                const errorText = await response.text();
+                throw new Error(errorText || "error");
+            }
         }
 
-        const data = await response.json();
-        return data;
+        try
+        {
+            const data = await response.json();
+            return data;
+        }
+        catch (err)
+        {
+            const text = await response.text();
+            return { success: false, message: text || "parse error" };
+        }
     }
-    catch (err: any)
+    catch (err : any)
     {
         throw new Error(`${(err as Error)?.message || err}`);
     }

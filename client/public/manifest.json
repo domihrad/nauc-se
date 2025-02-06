@@ -27,7 +27,6 @@
     [
         "<all_urls>",
         "https://*/*",
-        "http://*/*",
-        "chrome-extension://pkjoeemjccpakffnbmgbnnhcdmijablf/*"
+        "http://*/*"
     ]
 }

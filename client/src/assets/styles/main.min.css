@@ -28,11 +28,13 @@
   max-width: 1360px !important;
 }
 
-.page-small {
+.page {
   width: 22rem;
   height: 34rem;
 }
-.page-big {
-  width: 100vw;
-  height: 100vh;
+@media (min-width: 960px) {
+  .page {
+    width: 100vw;
+    height: 100vh;
+  }
 }

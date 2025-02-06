@@ -18,7 +18,7 @@ class Database:
         Initializes the Firebase app and references for users, words, and word banks.
         """
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        cred_path = os.path.join(base_dir, "../config/firebaseKey.json")
+        cred_path = os.path.join(base_dir, "./../config/firebaseKey.json")
 
         if not firebase_admin._apps:
             cred = credentials.Certificate(cred_path)
