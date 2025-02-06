@@ -51,7 +51,6 @@ export const LearnPage: React.FC<LearnPageProps> = ({ homepageDivRef }) =>
     useEffect(() =>
     {
         callData();
-        // CheckLoginUtils();
 
     }, []);
 

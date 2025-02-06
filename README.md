@@ -1,35 +1,4 @@
-CHATGPT Links :
-- How to highlight specific text using react typescript
+# Nauč-se
+## Made by : Dominik Hradecký
 
-- Setup firebase database with react typescript for usage of web extension
-
-- How do I make highlight text utils file that would highlight a word on a website for web extension so it will work on any website
-
-- Could you make the filter words that will filter specific words to not show up based on the words that are linked to the user itself based on code :
-
-Frontend Web url :
-
-- https://developer.chrome.com/docs/extensions/ - Chrome extension
-
-- https://react.dev/learn/typescript - React typescript
-
-- https://readymadeui.com/tailwind-blocks/login-form - Login page
-
-- https://www.material-tailwind.com/docs/ - Taiwlind
-
-- https://react-icons.github.io/react-icons/icons/io5/ - React icons
-
-Backend url :
-
-- https://flask.palletsprojects.com/en/3.0.x/ - Flask
-    - https://github.com/corydolphin/flask-cors - Flask cors
-
-- https://www.crummy.com/software/BeautifulSoup/bs4/doc/ - Beautiful Soup / scraping website
-
-- https://huggingface.co/docs/transformers/en/main_classes/pipelines - Translation
-
-- https://requests.readthedocs.io/en/latest/ - Requests
-
-
-Database url :
-- https://firebase.google.com/docs/
+Tento prejekt se zabývá efektivním stylem učení anglických slovíček, kterým člověk ještě nerozumí nebo si je neosvojil. Použitím mého webového rozšíření prostřednictvím prohlížeče Google Chrome se uživateli automaticky zobrazí slova, která ještě nezná. Aplikace je sestavena pomocí moderních technologií, knihoven a frameworků, jako jsou React, TypeScript, Python a Firebase. Cílem projektu bylo vyvinout jednodušší a efektivnější způsob učení, kdy uživatel získá novou slovní zásobu odpovídající jeho úrovni anglického jazyka, od úrovni A1 do C2. Tato slovíčka budou na webu zvýrazněna a uživateli se ihned zobrazí překlad. Tímto způsobem se zlepší celkový proces osvojování nových slovíček. Nakonec se uživatel bude moct učit slovíčka, pomoci učebních kartiček.
