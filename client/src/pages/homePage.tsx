@@ -54,14 +54,18 @@ export const Homepage: React.FC = () =>
                     if (currentWords.includes(result.selectedText)) return currentWords;
 
                     const updatedWords = [...currentWords, result.selectedText];
-                    setValData("words-data", updatedWords);
+
+                    setValData("words-data", updatedWords)
+                        .then(() => chrome.storage.local.remove("selectedText"));
+
                     return updatedWords;
                 });
-
-                chrome.storage.local.remove("selectedText");
             }
         });
+        chrome.storage.local.remove("selectedText");
     }, []);
+
+
 
     useEffect(() => {
         const addNewWordsToBank = async () => {
@@ -113,7 +117,7 @@ export const Homepage: React.FC = () =>
                 try
                 {
                     await addWordsToBank(userId, addedWords[i].toLowerCase());
-                    await delay(500);
+                    await delay(300);
                 }
                 catch (err)
                 {

@@ -28,13 +28,12 @@ export const TranslateApi = async (textToTranslate: string): Promise<string> =>
             }),
         });
 
+        const data = await response.json();
+
         if (!response.ok)
         {
-            const errorData = await response.json();
-            throw new Error(errorData.error);
+            throw new Error(`${(data.err as Error)?.message || data.err}`);
         }
-
-        const data = await response.json();
         return data.translated_text;
 
     } catch (err)

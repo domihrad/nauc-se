@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
+
 def scrape_text_utils(url: str):
     try:
         response = requests.get(url, timeout=10)

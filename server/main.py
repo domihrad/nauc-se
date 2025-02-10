@@ -163,13 +163,17 @@ def addWordsUser():
         word_name = data.get("word")
 
         if not id_user or not word_name:
-            return jsonify("error-no-word-info", 400)
+            return jsonify({"error": "error-no-word-info"}), 400
 
         word_id = db_conn.check_word_id(word_name)
+        if not word_id:
+            return jsonify({"error": "word-id-not-found"}), 404
+
         res = db_conn.add_word_to_bank(id_user, word_id)
-        return res
-    except Exception:
-        return jsonify("error-add-word", 500)
+        return jsonify({"message": res}), 200
+    except Exception as e:
+        return jsonify({"error": "error-add-word", "details": str(e)}), 500
+
 
 """
     Removes a word from the user's word bank.
@@ -180,20 +184,25 @@ def addWordsUser():
     :return: Response of validated response.
 """
 @app.route("/removewordbank", methods=["POST"])
-def testremove():
+def removeWordsUser():
     try:
         data = request.get_json()
         id_user = data.get("id")
         word_name = data.get("word")
 
         if not id_user or not word_name:
-            return jsonify("error-no-word-info", 400)
+            return jsonify({"error": "error-no-word-info"}), 400
 
         word_id = db_conn.check_word_id(word_name)
+        if not word_id:
+            return jsonify({"error": "word-id-not-found"}), 404
+
         res = db_conn.remove_word_from_bank(id_user, word_id)
-        return res
-    except Exception:
-        return jsonify("error-remove-word", 500)
+        return jsonify({"message": res}), 200
+
+    except Exception as e:
+        return jsonify({"error": "error-remove-word", "details": str(e)}), 500
+
 
 
 """

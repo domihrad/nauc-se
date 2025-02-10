@@ -233,49 +233,54 @@ class Database:
 
     def remove_word_from_bank(self, user_id, word_id):
         """
-        Removes a word from a user's word bank.
+        Removes a word from a user's word bank and deletes the word from the `words` table.
 
         Args:
             user_id (str): User's ID.
             word_id (str): Word's ID to remove.
 
         Returns:
-            dict: Success or error message.
+            str: Success or error message.
         """
         try:
-            word_bank_query = self.word_bank_ref.order_by_child("users_id").equal_to(user_id).get()
+            word_bank_query = self.users_word_bank_ref.order_by_child("users_id").equal_to(user_id).get()
 
             if not word_bank_query:
                 return {"error": "User's word bank not found."}
 
             for doc_id, doc_data in word_bank_query.items():
-                word_bank_ref = self.word_bank_ref.child(doc_id)
-                words_id = doc_data.get('words_id', [])
+                word_bank_ref = self.users_word_bank_ref.child(doc_id)
+                words_id = doc_data.get("words_id", {})
 
-                if not isinstance(words_id, list):
-                    words_id = []
+                if not isinstance(words_id, dict):
+                    words_id = {}
 
                 if word_id in words_id:
-                    words_id.remove(word_id)
+                    del words_id[word_id]
                     word_bank_ref.update({"words_id": words_id})
-                    return {"message": "Word removed successfully."}
-                else:
-                    return {"error": "Word not found in user's word bank."}
 
-            return {"error": "User's word bank not found."}
+                    word_ref = self.words_ref.child(word_id)
+                    word_ref.remove()
+
+                    return "Word removed successfully from both user's word bank and words table."
+                else:
+                    return "Word not found in user's word bank."
+
+            return "User's word bank not found."
 
         except Exception as e:
-            return {"error": f"Failed to remove word. Error: {str(e)}"}
+            return f"Failed to remove word. Error: {str(e)}"
+
 
     def check_word_id(self, word):
         """
-        //ignore
+        Checks if a word exists in the database by its name, and adds it if it does not exist.
 
         Args:
-            word (str): Name of the word to check.
+            word (str): The word to check or add.
 
         Returns:
-            str or bool: Word ID if found, or False if not found.
+            str: The word ID if found or created, or False if an error occurs.
         """
         try:
             result = self.words_ref.order_by_child("name").equal_to(word).get()
@@ -284,8 +289,15 @@ class Database:
                 word_id = next(iter(result.keys()))
                 return word_id
             else:
-                return False
+                new_word_ref = self.words_ref.push({
+                    "name": word
+                })
+                word_id = new_word_ref.key
+                return word_id
         except Exception as e:
             return False
+
+
+
 
 
