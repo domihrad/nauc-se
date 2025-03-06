@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LightToggleMode } from "../utils/lightToggleUtils";
 import { getValData, removeValData } from "../services/getDataChrome";
 import { FaUserCog } from "react-icons/fa";
+import { Globals } from "..";
 
 /**
  * Header component that displays navigation links, user information, and light mode toggle.
@@ -29,11 +30,12 @@ export const Header : React.FC = () =>
             {
                 const userDataTrim = userData.slice(1, -1);
                 setUserExist(userDataTrim);
-
+                navigate(window.innerWidth > Globals.widthRequired ? "/learnpage" : "/");
             }
             else
             {
                 removeValData("user");
+                navigate("/login")
             }
         };
 
@@ -56,7 +58,7 @@ export const Header : React.FC = () =>
 
     return (
         <div className="flex items-center justify-center h-min">
-            <div className="flex items-center space-x-4 m-4 w-full">
+            <div className="flex items-center space-x-4 w-full">
                 <div className="w-1/2">
                     <div className="flex items-center justify-center">
                         <div className="flex items-center justify-between">

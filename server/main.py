@@ -204,7 +204,6 @@ def removeWordsUser():
         return jsonify({"error": "error-remove-word", "details": str(e)}), 500
 
 
-
 """
     Retrieves all words in the user's word bank.
 

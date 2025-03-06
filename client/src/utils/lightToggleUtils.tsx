@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 import { getValData, setValData } from "../services/getDataChrome";
 
+/**
+ * Toggle dark / light mode
+ * @function.
+ * @returns {JSX.Element} The rendered switch component.
+ *
+ */
+
 export const LightToggleMode: React.FC = () =>
 {
     const [dark, setDark] = useState(false);

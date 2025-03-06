@@ -2,6 +2,13 @@ import { CheckLoginUtils } from "./checkLoginUtils";
 import { WordBankAddApi } from "../api/wordBankAddApi";
 import { getValData, setValData } from "../services/getDataChrome";
 
+/**
+ * Call Homepage data
+ * @async
+ * @function
+ *
+ */
+
 export const HomepageUtils: React.FC = () =>
 {
     CheckLoginUtils();

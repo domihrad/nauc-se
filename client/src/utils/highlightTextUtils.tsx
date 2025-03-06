@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useScrapedData } from "./scrapeTextUtils";
 import { LoadingBlock } from "../blocks/loadingBlock";
+import { Globals } from "..";
 
 declare global
 {
@@ -34,8 +35,8 @@ export const WordHighlighter: React.FC = () =>
         }
     }, [scrapedData, loading]);
 
-    if (loading) return <LoadingBlock />;
-    if (error) return <div>Error: {error}</div>;
+    if (loading && window.innerWidth < Globals.widthRequired) return <LoadingBlock />;
+    if (error) return <p className="text-center">Server is not working!</p>;
     return null;
 };
 /**

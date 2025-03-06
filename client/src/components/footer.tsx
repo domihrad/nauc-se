@@ -26,6 +26,7 @@ export const Footer: React.FC = () =>
                                 <a
                                     href="https://github.com/domihrad"
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     className="text-gray-400 hover:text-gray-900 dark:hover:text-white text-sm md:text-xl lg:text-xl"
                                 >
                                     <FaGithub size={20} />
@@ -35,6 +36,7 @@ export const Footer: React.FC = () =>
                                 <a
                                     href="https://www.linkedin.com/in/domihrad/"
                                     target="_blank"
+                                    rel="noopener noreferrer"
                                     className="text-gray-400 hover:text-gray-900 dark:hover:text-white text-sm md:text-xl lg:text-xl"
                                 >
                                     <FaLinkedin size={20} />

@@ -4,6 +4,7 @@
     "short_name": "Translator",
     "description": "Vytvořil : Dominik Hradecký",
     "manifest_version": 3,
+
     "permissions" :
     [
         "tabs",

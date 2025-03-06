@@ -49,7 +49,7 @@ export const LoginPage: React.FC = () =>
             const widthWindow = window.innerWidth;
             if (widthWindow > 1000)
             {
-                openExtension();
+                openExtension(navigate);
             }
             else
             {

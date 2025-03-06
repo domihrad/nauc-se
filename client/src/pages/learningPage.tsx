@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Footer } from "../components/footer";
 import { UserWordsApi } from "../api/userWordsApi";
 import { getValData } from "../services/getDataChrome";
 import { TranslateApi } from "../api/translateApi";
 import { WordBankRemoveApi } from "../api/wordBankRemoveApi";
-import { CheckLoginUtils } from "../utils/checkLoginUtils";
 
 interface LearnPageProps {
     homepageDivRef: React.RefObject<HTMLDivElement | null>;
@@ -145,6 +144,7 @@ export const LearnPage: React.FC<LearnPageProps> = ({ homepageDivRef }) =>
                         Remove Word
                     </button>
                 </div>
+                <h1 className="text-center text-base pt-2">Total added words : {words.length}</h1>
             </div>
             <Footer />
         </>

@@ -231,9 +231,11 @@ class Database:
         except Exception as e:
             return "Failed to add word."
 
+
     def remove_word_from_bank(self, user_id, word_id):
         """
-        Removes a word from a user's word bank and deletes the word from the `words` table.
+        Removes a word from a user's word bank and deletes the word from 'words'
+        if it has no English level.
 
         Args:
             user_id (str): User's ID.
@@ -243,33 +245,42 @@ class Database:
             str: Success or error message.
         """
         try:
-            word_bank_query = self.users_word_bank_ref.order_by_child("users_id").equal_to(user_id).get()
+            word_bank_query = self.word_bank_ref.order_by_child("users_id").equal_to(user_id).get()
 
             if not word_bank_query:
                 return {"error": "User's word bank not found."}
 
-            for doc_id, doc_data in word_bank_query.items():
-                word_bank_ref = self.users_word_bank_ref.child(doc_id)
-                words_id = doc_data.get("words_id", {})
+            word_removed = False
 
-                if not isinstance(words_id, dict):
-                    words_id = {}
+            for doc_id, doc_data in word_bank_query.items():
+                word_bank_ref = self.word_bank_ref.child(doc_id)
+                words_id = doc_data.get("words_id", [])
+
+                if not isinstance(words_id, list):
+                    words_id = []
 
                 if word_id in words_id:
-                    del words_id[word_id]
+                    words_id.remove(word_id)
                     word_bank_ref.update({"words_id": words_id})
+                    word_removed = True
+                    break
 
-                    word_ref = self.words_ref.child(word_id)
-                    word_ref.remove()
+            if not word_removed:
+                return "Word not found in user's word bank."
 
-                    return "Word removed successfully from both user's word bank and words table."
-                else:
-                    return "Word not found in user's word bank."
+            word_data = self.words_ref.child(word_id).get()
 
-            return "User's word bank not found."
+            if word_data:
+                word_level = word_data.get("level", None)
+
+                if word_level is None or word_level == "":
+                    self.words_ref.child(word_id).delete()
+
+            return "Word removed successfully."
 
         except Exception as e:
             return f"Failed to remove word. Error: {str(e)}"
+
 
 
     def check_word_id(self, word):
