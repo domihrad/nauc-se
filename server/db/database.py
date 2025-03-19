@@ -301,7 +301,8 @@ class Database:
                 return word_id
             else:
                 new_word_ref = self.words_ref.push({
-                    "name": word
+                    "name": word,
+                    "level" : "0"
                 })
                 word_id = new_word_ref.key
                 return word_id

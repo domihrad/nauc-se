@@ -58,7 +58,7 @@ export const Header : React.FC = () =>
 
     return (
         <div className="flex items-center justify-center h-min">
-            <div className="flex items-center space-x-4 w-full">
+            <div className="flex items-center space-x-4 mt-4 w-full">
                 <div className="w-1/2">
                     <div className="flex items-center justify-center">
                         <div className="flex items-center justify-between">

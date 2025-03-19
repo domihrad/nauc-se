@@ -7,6 +7,7 @@ import { SignupPage } from "./features/signup";
 import { LoginPage } from "./features/login";
 import { Errorpage } from "./pages/errorPage";
 import { Footer } from "./components/footer";
+import { Globals } from ".";
 
 
 /**
@@ -36,7 +37,7 @@ const App: React.FC = () =>
                     <Route path="/learnpage" element={<LearnPage homepageDivRef={homepageDivRef} />} />
                     <Route path="*" element={<Errorpage />} />
                 </Routes>
-                <Footer />
+                { window.innerWidth > Globals.widthRequired ? <Footer /> : <></>}
             </div>
         </Router>
     );
